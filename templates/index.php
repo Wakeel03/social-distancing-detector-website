@@ -60,8 +60,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Daily Violation</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">10(dummy)</div>
+                                                Camera</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">Fruit/Vegatables Section</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fa fa-exclamation-triangle fa-2x text-gray-300"></i>
@@ -78,8 +78,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Peak hours</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">sample</div>
+                                                Total Visitors</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">843</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-clock fa-2x text-gray-300"></i>
@@ -95,11 +95,11 @@
                                 <div class="card-body">
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
-                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Persons per hour
+                                            <div class="text-xs font-weight-bold text-info text-uppercase mb-1">Total Violations
                                             </div>
                                             <div class="row no-gutters align-items-center">
                                                 <div class="col-auto">
-                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">50%</div>
+                                                    <div class="h5 mb-0 mr-3 font-weight-bold text-gray-800">265</div>
                                                 </div>
                                                 <div class="col">
                                                     <div class="progress progress-sm mr-2">
@@ -125,8 +125,8 @@
                                     <div class="row no-gutters align-items-center">
                                         <div class="col mr-2">
                                             <div class="text-xs font-weight-bold text-warning text-uppercase mb-1">
-                                                Total cameras</div>
-                                            <div class="h5 mb-0 font-weight-bold text-gray-800">4</div>
+                                                Percentage Violations</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">31.4%</div>
                                         </div>
                                         <div class="col-auto">
                                             <i class="fas fa-video fa-2x text-gray-300"></i>
@@ -147,7 +147,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Violations overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Overview</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -155,11 +155,11 @@
                                         </a>
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
-                                            <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            <div class="dropdown-header">Time Lapse</div>
+                                            <a class="dropdown-item" href="#">15 sec</a>
+                                            <a class="dropdown-item" href="#">1 min</a>
+                                            <a class="dropdown-item" href="#">15 min</a>
+                                            <a class="dropdown-item" href="#">1 hour</a>
                                         </div>
                                     </div>
                                 </div>
@@ -180,7 +180,7 @@
                                 <!-- Card Header - Dropdown -->
                                 <div
                                     class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 class="m-0 font-weight-bold text-primary">Regions overview</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Security Level</h6>
                                     <div class="dropdown no-arrow">
                                         <a class="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -189,10 +189,7 @@
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Dropdown Header:</div>
-                                            <a class="dropdown-item" href="#">Action</a>
-                                            <a class="dropdown-item" href="#">Another action</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">Something else here</a>
+                                            
                                         </div>
                                     </div>
                                 </div>
