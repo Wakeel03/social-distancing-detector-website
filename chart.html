@@ -1,0 +1,124 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+	</head>
+	<body>
+		<input value="update" type="button" id="butn" onclick="addData()" style="display:none;">
+		
+		<div class = "chart-container" style = "position: relative; height:40; width:80">
+			<canvas id='mychart'></canvas>
+			
+			<!-- draw chart -->
+			<script>
+				let label;
+				let cases;
+				let chart
+				let myChart;
+				
+				window.onload = function(){
+					var button = document.getElementById('butn');
+					setInterval(function(){
+					button.click();
+					},1000); 
+				};
+				/*
+				what can be done:
+				send the json 
+				compare response[i].date with date on graph label[]
+				at dates greater than last value of label[]
+				push onto label and date for date index i at ....
+				chart.update()
+				*/
+				$(function(){
+
+					$.ajax({
+						url:'InitialData.php',
+						success:function(response){
+							label=[];
+							cases=[];
+							for(let i=0;i<response.length;i++){
+								label.push(response[i].timestamp);
+								cases.push(response[i].total_violations);
+								
+								if(label.length>8){
+									label.shift();
+									cases.shift();
+								}
+							}
+							Chart.defaults.global.legend.display = false;
+
+							let myChart=$('#mychart');
+							chart=new Chart(myChart,{
+								type:'line',
+								label:'test',
+
+								data:{
+									labels:label,
+									datasets:[{
+										label:"cases",
+										data:cases,
+
+										backgroundColor: [
+											'rgb(214, 245, 214,0.5)'
+										],
+
+										borderColor: [
+											'rgb(46, 184, 46, 1)'
+										],
+
+									}],
+
+
+								}
+
+							})
+
+						},	
+
+
+
+						error:function(response){
+							
+						}
+
+					})
+
+			})
+
+			
+			$('#butn').click(function(){
+
+				$.ajax({
+					url:'NewData.php',
+					success:function(response){
+						label.push(response[response.length-1].timestamp);
+						cases.push(response[response.length-1].total_violations);
+
+					},	
+
+
+
+					error:function(response){
+						
+					}
+
+				})
+
+		})
+
+				function addData(){
+					while(label.length>5){
+						label.shift();
+						cases.shift();
+					}
+					chart.update();
+				}
+				
+
+			</script>
+		</div>
+	</body>
+</html>
+
