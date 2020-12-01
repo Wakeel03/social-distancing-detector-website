@@ -28,9 +28,9 @@
     }
 
     else{
-   
+    $registration_error_message = "";
     $template = new Template('templates/register.php');
-    $template->registrationError = "$registration_error_message";
+    $template->registrationError = $registration_error_message;
     echo $template;
 }
 
