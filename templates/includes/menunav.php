@@ -1,6 +1,6 @@
 <?php
     session_start();
-    $username = $_SESSION['username'];
+    $_SESSION['username'];
 ?>
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
@@ -111,7 +111,7 @@
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
                         <h6 class="collapse-header">Coming soon:</h6>
-                        <a class="collapse-item" href="USEFUL/login.html">Login</a>
+                        <a class="collapse-item" href="USEFUL/logout.php">Login</a>
                         <a class="collapse-item" href="USEFUL/register.html">Register</a>
                         <a class="collapse-item" href="USEFUL/forgot-password.html">Forgot Password</a>
                         <div class="collapse-divider"></div>
@@ -321,7 +321,7 @@
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                                 data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $username?></span>
+                                <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['username']?></span>
                                 <img class="img-profile rounded-circle"
                                     src="img/undraw_profile.svg">
                             </a>
