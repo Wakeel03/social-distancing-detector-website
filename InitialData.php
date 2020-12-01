@@ -1,18 +1,29 @@
 <?php
+
+	//session_start();
 	$host='localhost';
-	$user='root';
-	$password='';
+	$user='hackGC';
+	$password='5AZuXp6Mz9bMKSG%';
 	$dbname='crowdvision';
-	//$username = mysql_query("SELECT * FROM tb_data,tb_cameras WHERE tb_camearas.username = '".$_SESSION['username']."' GROUP BY tb_data.camera_id;
+	session_start();
+	(int)$cam_id=(int)$_SESSION['camSel'];
+	//var_dump($cam_id);
 
-
+	/*
+	$conn = mysqli_connect("localhost","hackGC","5AZuXp6Mz9bMKSG%","crowdvision");
+	$query='SELECT * FROM tb_data WHERE camera_id='.$cam_id;
+	$result=mysqli_query($conn,$query);
+	$graphData=mysqli_fetch_all($result,MYSQLI_ASSOC);
+	mysqli_free_result($result);
+	*/
+	//$cam_id=5;
 	$dsn='mysql:host='.$host.';dbname='.$dbname;
 
 	$pdo=new PDO($dsn,$user,$password);
-
-	$stmt=$pdo->query('SELECT * FROM tb_data');
+	$stmt=$pdo->prepare("SELECT * FROM tb_data WHERE camera_id=:cam_id");
+	$stmt->execute(['cam_id'=>$cam_id]);
 	$graphData=$stmt->fetchAll(PDO::FETCH_OBJ);
 
+	//var_dump($graphData); //this breaks the graph
 	header('Content-Type:application/json');
 	echo json_encode($graphData);
-

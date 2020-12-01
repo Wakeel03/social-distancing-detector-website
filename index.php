@@ -1,12 +1,16 @@
 <?php include 'config/init.php';?>
 
 <?php
-    #session_start();
 
     #$current_user = $_SESSION['user_id'];
-    
     $template = new Template('templates/index.php');
+    if (isset($_POST)) {
+        $_SESSION['camSel'] = $_POST['camSel'];
+        //echo ($_SESSION['camSel']);
+    }
+
     $template->title = SITE_TITLE;
+
 
     #$user_obj = new User;
     #$user = $user_obj->getUserById($current_user);
