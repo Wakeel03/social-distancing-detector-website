@@ -79,7 +79,7 @@
 
                 $this->db->query("UPDATE tb_user SET first_level_limit = :first_level_limit, second_level_limit= :second_level_limit, third_level_limit =:third_level_limit, fourth_level_limit=:fourth_level_limit, fifth_level_limit= :fifth_level_limit  WHERE username = :username");
 
-                $this->db->bind(":user_id", $username);
+                $this->db->bind(":username", $username);
                 $this->db->bind(":first_level_limit", $first_level_limit);
                 $this->db->bind(":second_level_limit", $second_level_limit);
                 $this->db->bind(":third_level_limit", $third_level_limit);
