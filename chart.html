@@ -7,23 +7,40 @@
 	<body>
 		<input value="update" type="button" id="butn" onclick="addData()" style="display:none;">
 		
-		<div class = "chart-container" style = "position: relative; height:40; width:80">
+		<div class = "chart-container" style = "position: relative; height:40; width:80" >
+			
 			<canvas id='mychart'></canvas>
 			
 			<!-- draw chart -->
 			<script>
 				let label;
 				let cases;
-				let chart
+				let chart;
 				let myChart;
+				let visitors;
 				
 				window.onload = function(){
 					var button = document.getElementById('butn');
 					setInterval(function(){
 					button.click();
-					},1000); 
+					},1500); 
 				};
 				/*
+				ik-notes
+				[changes]
+				- 2 overlapping graphics: visitors+viol/time
+				- y axis no longer showing negative values
+				- interval fixed
+				- added a sql to use when db is fixed in the fetch file.php
+				-db user info is now localroot for every files
+
+				[todo]
+				--get data for only user who logged in
+				
+				
+
+
+				jp-notes
 				what can be done:
 				send the json 
 				compare response[i].date with date on graph label[]
@@ -38,13 +55,17 @@
 						success:function(response){
 							label=[];
 							cases=[];
+							visitors=[];
 							for(let i=0;i<response.length;i++){
 								label.push(response[i].timestamp);
 								cases.push(response[i].total_violations);
+								visitors.push(response[i].total_visitors);
 								
 								if(label.length>8){
 									label.shift();
 									cases.shift();
+									visitors.shift();
+									
 								}
 							}
 							Chart.defaults.global.legend.display = false;
@@ -53,19 +74,42 @@
 							chart=new Chart(myChart,{
 								type:'line',
 								label:'test',
-
+								options: {
+											scales: {
+												yAxes: [{
+													ticks: {
+														beginAtZero: true
+													}
+												}]
+											}
+										},
 								data:{
 									labels:label,
 									datasets:[{
 										label:"cases",
 										data:cases,
-
+										
+										
 										backgroundColor: [
-											'rgb(214, 245, 214,0.5)'
+											'rgb(200, 0, 0,0.1)'
 										],
 
 										borderColor: [
-											'rgb(46, 184, 46, 1)'
+											'rgb(200, 0, 0, 1)'
+										],
+
+									},
+									
+									{
+										label:"visitors",
+										data:visitors,
+										
+										backgroundColor: [
+											'rgb(0, 200, 0,0.1)'
+										],
+
+										borderColor: [
+											'rgb(0, 200, 0, 1)'
 										],
 
 									}],
@@ -95,6 +139,7 @@
 					success:function(response){
 						label.push(response[response.length-1].timestamp);
 						cases.push(response[response.length-1].total_violations);
+						visitors.push(response[response.length-1].total_visitors);
 
 					},	
 
@@ -112,11 +157,12 @@
 					while(label.length>5){
 						label.shift();
 						cases.shift();
+						visitors.shift();
 					}
 					chart.update();
 				}
 				
-
+			
 			</script>
 		</div>
 	</body>
