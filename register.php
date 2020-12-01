@@ -1,7 +1,8 @@
 <?php include 'config/init.php';?>
 <?php
     session_start();
-    if(!empty($_POST['btn_register'])){
+    $registration_error_message ="";
+     if(!empty($_POST['btn_register'])){
         $firstname = $_POST['firstName'];
         $lastname = $_POST['lastName'];
         $email = $_POST['inputEmail'];
@@ -30,7 +31,7 @@
     else{
    
     $template = new Template('templates/register.php');
-    $template->registrationError = "$registration_error_message";
+    $template->registrationError = $registration_error_message;
     echo $template;
 }
 
