@@ -1,53 +1,31 @@
 <html>
 	<head>
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-
 		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
 	</head>
 	<body>
-		<input value="update" type="button" id="butn" onclick="addData()" style="display:none;">
+		<input value="update" type="button" id="butn" style="display: none" >
 		
-		<div class = "chart-container" style = "position: relative; height:40; width:80" >
+		<div class = "chart-container">
 			
 			<canvas id='mychart'></canvas>
-			
-			<!-- draw chart -->
 			<script>
 				let label;
 				let cases;
 				let chart;
 				let myChart;
 				let visitors;
-				
+				let percent;
+
 				window.onload = function(){
 					var button = document.getElementById('butn');
 					setInterval(function(){
 					button.click();
-					},1500); 
+					},
+					2000
+					);
 				};
-				/*
-				ik-notes
-				[changes]
-				- 2 overlapping graphics: visitors+viol/time
-				- y axis no longer showing negative values
-				- interval fixed
-				- added a sql to use when db is fixed in the fetch file.php
-				-db user info is now localroot for every files
-
-				[todo]
-				--get data for only user who logged in
 				
-				
-
-
-				jp-notes
-				what can be done:
-				send the json 
-				compare response[i].date with date on graph label[]
-				at dates greater than last value of label[]
-				push onto label and date for date index i at ....
-				chart.update()
-				*/
 				$(function(){
 
 					$.ajax({
@@ -56,44 +34,37 @@
 							label=[];
 							cases=[];
 							visitors=[];
+							percent=[];
 							for(let i=0;i<response.length;i++){
 								label.push(response[i].timestamp);
 								cases.push(response[i].total_violations);
 								visitors.push(response[i].total_visitors);
+								percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
+								if(visitors[i]==0){
+									percent[i]=0;
+								}
 								
-								if(label.length>8){
+								if(label.length>15){
 									label.shift();
 									cases.shift();
 									visitors.shift();
-									
+									percent.shift();
 								}
 							}
-							Chart.defaults.global.legend.display = false;
-
+							
 							let myChart=$('#mychart');
 							chart=new Chart(myChart,{
 								type:'line',
 								label:'test',
-								options: {
-											scales: {
-												yAxes: [{
-													ticks: {
-														beginAtZero: true
-													}
-												}]
-											}
-										},
+
 								data:{
 									labels:label,
 									datasets:[{
 										label:"cases",
 										data:cases,
-										
-										
 										backgroundColor: [
 											'rgb(200, 0, 0,0.1)'
 										],
-
 										borderColor: [
 											'rgb(200, 0, 0, 1)'
 										],
@@ -103,15 +74,24 @@
 									{
 										label:"visitors",
 										data:visitors,
-										
 										backgroundColor: [
 											'rgb(0, 200, 0,0.1)'
 										],
-
 										borderColor: [
 											'rgb(0, 200, 0, 1)'
 										],
 
+									},
+									{
+										label:"% violations",
+										data: percent,
+										backgroundColor: [
+											'rgb(255, 128, 0,0.1)'
+										],
+
+										borderColor: [
+											'rgb(255, 128, 0, 1)'
+										],
 									}],
 
 
@@ -137,14 +117,26 @@
 				$.ajax({
 					url:'NewData.php',
 					success:function(response){
-						label.push(response[response.length-1].timestamp);
-						cases.push(response[response.length-1].total_violations);
-						visitors.push(response[response.length-1].total_visitors);
-
+						let lastlabel=label[label.length-1];
+						let i=0;
+						for(i;i<response.length;i++){
+							if(response[i].timestamp==lastlabel){
+								i++
+								break;
+							}
+						}
+						for(i;i<response.length;i++){
+							label.push(response[i].timestamp);
+							cases.push(response[i].total_violations);
+							visitors.push(response[i].total_visitors);
+							percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
+							if(visitors[i]==0){
+								percent[i]=0;
+							}
+						}
+					
+			            addData();
 					},	
-
-
-
 					error:function(response){
 						
 					}
@@ -154,10 +146,11 @@
 		})
 
 				function addData(){
-					while(label.length>5){
+					while(label.length>15){
 						label.shift();
 						cases.shift();
 						visitors.shift();
+						percent.shift();
 					}
 					chart.update();
 				}

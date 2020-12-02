@@ -155,6 +155,11 @@
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                             <i class="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
                                         </a>
+
+
+                                       <?php include ('../camdropdown.php'); ?>
+
+
                                         <div class="dropdown-menu dropdown-menu-right shadow animated--fade-in"
                                             aria-labelledby="dropdownMenuLink">
                                             <div class="dropdown-header">Time Lapse</div>
@@ -168,7 +173,7 @@
                                 <!-- Card Body -->
                                 <div class="card-body">
                                     <div class="chart-area">
-                                    <?php include('../chart.html'); ?>
+                                        <?php include('../chart.html'); ?>
 
                                     </div>
                                 </div>
