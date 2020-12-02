@@ -34,15 +34,15 @@
 							label=[];
 							cases=[];
 							visitors=[];
-							percent=[];
+							//percent=[];
 							for(let i=0;i<response.length;i++){
 								label.push(response[i].timestamp);
 								cases.push(response[i].total_violations);
 								visitors.push(response[i].total_visitors);
-								percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
-								if(visitors[i]==0){
-									percent[i]=0;
-								}
+								//percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
+								// if(visitors[i]==0){
+								// 	percent[i]=0;
+								// }
 								
 								if(label.length>15){
 									label.shift();
@@ -82,17 +82,18 @@
 										],
 
 									},
-									{
-										label:"% violations",
-										data: percent,
-										backgroundColor: [
-											'rgb(255, 128, 0,0.1)'
-										],
+									// {
+									// 	label:"% violations",
+									// 	data: percent,
+									// 	backgroundColor: [
+									// 		'rgb(255, 128, 0,0.1)'
+									// 	],
 
-										borderColor: [
-											'rgb(255, 128, 0, 1)'
-										],
-									}],
+									// 	borderColor: [
+									// 		'rgb(255, 128, 0, 1)'
+									// 	],
+									// }
+									 ],
 
 
 								}
@@ -129,12 +130,15 @@
 							label.push(response[i].timestamp);
 							cases.push(response[i].total_violations);
 							visitors.push(response[i].total_visitors);
-							percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
-							if(visitors[i]==0){
-								percent[i]=0;
-							}
+						//	percent.push( 100* ( parseFloat(cases[i])/parseFloat(visitors[i]) ) ) ;
+							// if(visitors[i]==0){
+							// 	percent[i]=0;
+							// }
 						}
+
 					
+
+
 			            addData();
 					},	
 					error:function(response){
@@ -150,7 +154,7 @@
 						label.shift();
 						cases.shift();
 						visitors.shift();
-						percent.shift();
+						//percent.shift();
 					}
 					chart.update();
 				}

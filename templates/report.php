@@ -52,6 +52,9 @@
                         <div class="form-group">
                             <button class="btn btn-danger" type="submit" name="btn_getRecord" value="record_details">Submit</button>
                         </div>
+                        <div class="form-group"style="margin-left: 10px">
+                            <a class="btn btn-danger" href="index.php">Home</a>
+                        </div>
                     </div>
                 </form>
                 <div class="card o-hidden border-0 shadow-lg my-5">

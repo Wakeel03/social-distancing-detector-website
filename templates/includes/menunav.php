@@ -82,44 +82,15 @@
                 </div>
             </li>
 
-            <!-- Nav Item - Utilities Collapse Menu -->
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i class="fas fa-fw fa-wrench"></i>
-                    <span>Live</span>
-                </a>
-                <div id="collapseUtilities" class="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Coming soon</h6>
-                        <a class="collapse-item" href="#">Coming soon</a>
-                        <a class="collapse-item" href="#">Coming soon</a>
-                        <a class="collapse-item" href="#">Coming soon</a>
-                        <a class="collapse-item" href="#">Coming soon</a>
-                    </div>
-                </div>
-            </li>
+           
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
+                <a class="nav-link collapsed" href="report.php">
                     <i class="fas fa-fw fa-folder"></i>
                     <span>Reports</span>
                 </a>
-                <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div class="bg-white py-2 collapse-inner rounded">
-                        <h6 class="collapse-header">Coming soon:</h6>
-                        <a class="collapse-item" href="USEFUL/logout.php">Login</a>
-                        <a class="collapse-item" href="USEFUL/register.html">Register</a>
-                        <a class="collapse-item" href="USEFUL/forgot-password.html">Forgot Password</a>
-                        <div class="collapse-divider"></div>
-                        <h6 class="collapse-header">Other Pages:</h6>
-                        <a class="collapse-item" href="USEFUL/404.html">404 Page</a>
-                        <a class="collapse-item" href="USEFUL/blank.html">Blank Page</a>
-                    </div>
-                </div>
+                
             </li>
 
             <!-- Divider -->

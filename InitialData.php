@@ -20,10 +20,12 @@
 	$dsn='mysql:host='.$host.';dbname='.$dbname;
 
 	$pdo=new PDO($dsn,$user,$password);
-	$stmt=$pdo->prepare("SELECT * FROM tb_data WHERE camera_id=:cam_id");
+	$stmt=$pdo->prepare("SELECT * FROM tb_user INNER JOIN tb_cameras ON tb_user.username = tb_cameras.username INNER JOIN tb_data ON tb_cameras.camera_id = tb_data.camera_id  WHERE tb_cameras.camera_id=:cam_id");
 	$stmt->execute(['cam_id'=>$cam_id]);
 	$graphData=$stmt->fetchAll(PDO::FETCH_OBJ);
 
-	//var_dump($graphData); //this breaks the graph
+	#var_dump($graphData); //this breaks the graph
+	#die;
+
 	header('Content-Type:application/json');
 	echo json_encode($graphData);

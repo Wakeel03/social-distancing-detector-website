@@ -15,7 +15,6 @@ if ($result != 0) {
 	echo '<form action = "index.php" method ="post">';
     
     echo '<select name="camSel" onchange="submit();">';
-    echo '<option value="">please select camera</option>';
 
     $num_results = mysqli_num_rows($result);
     for ($i=0;$i<$num_results;$i++) {
