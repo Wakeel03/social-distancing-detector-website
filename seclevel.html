@@ -1,0 +1,79 @@
+<html>
+	<head>
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.4/dist/Chart.min.js"></script>
+	</head>
+	<body>
+		<input value="update" type="button" id="butn" style="display: none" >
+		
+		<div class = "chart-container">
+			
+			<canvas id='mychart'></canvas>
+			<script>
+				let label;
+				let cases;
+				let chart;
+				let myChart;
+				let visitors;
+				let percent;
+                let first;
+                let second;
+                let third;
+                let fourth;
+                let fifth;
+                let level;
+                
+
+
+				window.onload = function(){
+					var button = document.getElementById('butn');
+					setInterval(function(){
+					button.click();
+					},
+					2000
+					);
+				};
+				
+				$(function(){
+
+					$.ajax({
+						url:'InitialData.php',
+						success:function(response){
+							
+						    let cases;
+							let visitors;
+                            let first;
+                            let second;
+                            let third;
+                            let fourth;
+                            let fifth;
+                            let level;
+
+							
+                            
+                            cases = (response[response.length-1].total_violations);
+                            visitors = (response[response.length-1].total_visitors);
+                            first= (response[response.length-1].first_level_limit);
+                            second= (response[response.length-1].second_level_limit);
+                            third= (response[response.length-1].third_level_limit);
+                            fourth= (response[response.length-1].fourth_level_limit);
+                            fifth= (response[response.length-1].fifth_level_limit);
+                            level = ( 100* ( ((0.4 * parseFloat(visitors))+ (0.6 * parseFloat(cases)))/(parseFloat(visitors) + parseFloat(cases)) )) ;
+                           
+							return level;
+						},	
+
+
+
+						error:function(response){
+							
+						}
+
+					})
+
+			})
+			</script>
+		</div>
+	</body>
+</html>
+
