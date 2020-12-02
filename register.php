@@ -21,7 +21,6 @@
             }
             else{
                 $result = $user->register($firstname, $lastname, $username, $password, $email, $companyName);
-                
                 header("Location: login.php");
             }
                 

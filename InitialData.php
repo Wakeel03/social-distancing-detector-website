@@ -1,7 +1,7 @@
 <?php
 	$host='localhost';
 	$user='root';
-	$password='';
+	$password='5AZuXp6Mz9bMKSG%';
 	$dbname='crowdvision';
 	//$username = mysql_query("SELECT * FROM tb_data,tb_cameras WHERE tb_camearas.username = '".$_SESSION['username']."' GROUP BY tb_data.camera_id;
 

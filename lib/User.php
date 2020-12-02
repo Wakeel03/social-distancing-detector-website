@@ -31,6 +31,19 @@
             }
         }
 
+        public function getCameras($username){
+            try{
+                $this->db->query("SELECT camera_id, camera_name FROM tb_cameras WHERE username=:username ");
+
+                $this->db->bind(":username", $username);
+                
+                return $this->db->resultSet();
+
+            }catch(PDOException $e){
+                return $e->getMessage();
+            }
+        }
+
        
 
          //login user

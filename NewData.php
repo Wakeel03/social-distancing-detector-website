@@ -4,7 +4,7 @@
 	//$username = mysql_query("SELECT * FROM tb_data,tb_cameras WHERE tb_camearas.username = '".$_SESSION['username']."' GROUP BY tb_data.camera_id;
 	$host='localhost';
 	$user='root';
-	$password='';
+	$password='5AZuXp6Mz9bMKSG%';
 	$dbname='crowdvision';
 
 	$dsn='mysql:host='.$host.';dbname='.$dbname;
@@ -14,5 +14,7 @@
 	$newData=$stmt->fetchAll(PDO::FETCH_OBJ);
 	header('Content-Type:application/json');
 	echo json_encode($newData);
+
+?>
 
 	

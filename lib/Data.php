@@ -29,8 +29,18 @@
             }
         }
 
+        public function getRecord($username, $date, $cam){
+            try{
+                $this->db->query("SELECT hour, sum(total_violations) as tot_vio FROM tb_data where camera_id = :cam and date = :current_date group by hour");
+                $this->db->bind(":current_date", $date);
+                $this->db->bind(":cam", $cam);
 
+                return $this->db->resultSet();
 
+            }catch(PDOException $e){
+                return $e->getMessage();
+            }
+        }
 
     }
 ?>
