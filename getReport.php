@@ -14,7 +14,7 @@
     */
     
     $data_obj = new Data;
-    $username = $_SESSION['username'];
+    $username  = $_SESSION['username'];
 
     #echo $_SESSION['date'];
     #echo $_SESSION['cam'];
